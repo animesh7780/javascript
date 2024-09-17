@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animesh</title>
+</head>
+
+<body>
+    <button id="green">Green</button>
+    <button id="orange">Orange</button>
+</body>
+<script>
+    //function init() {
+    //let name = "Mozilla";
+    //function displayName() {
+    //console.log(name);
+    //}
+    //displayName();
+    //}
+    //init(); 
+
+    function outer() {
+        let name = "Mozilla";
+
+        function inner() {
+            console.log("inner", name);
+
+        }
+
+        function innerTwo() {
+            let seret = "my123"
+            console.log(seret)
+        }
+        inner();
+        innerTwo()
+    }
+    outer()
+    console.log("to outer", name)
+
+    function makeFunc() {
+        const name = "Mozilla";
+        function displayName() {
+            console.log(name);
+        }
+        return displayName;
+    }
+
+    const myFunc = makeFunc();
+    myFunc();
+
+</script>
+<script>
+    document.getElementById("green").onclick = function () {
+        document.body.style.backgroundColor = "green";
+    }
+    document.getElementById("orange").onclick = function () {
+        document.body.style.backgroundColor = "orange";
+    }
+
+    function clickHandler(color) {
+        //document.body.style.backgroundColor = `${color}`
+        return function () {
+            document.body.style.backgroundColor = `${color}`
+        }
+    }
+    document.getElementById("green").onclick = clickHandler("green");
+    document.getElementById("orange").onclick = clickHandler("orange");
+
+</script>
+
+</html>
